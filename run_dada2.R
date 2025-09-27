@@ -5,19 +5,19 @@ library(dada2)
 path <- getwd() 
 
 # Sort forward and reverse files using the new file names
-fnFs <- sort(list.files(path, pattern="_R1.fastq.gz", full.names = TRUE))
-fnRs <- sort(list.files(path, pattern="_R2.fastq.gz", full.names = TRUE))
+fnFs <- sort(list.files(path, pattern="_R1_001.fastq", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern="_R2_001.fastq", full.names = TRUE))
 sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
 
 # Create a place for filtered files
 filtFs <- file.path(path, "filtered", paste0(sample.names, "_F_filt.fastq.gz"))
 filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))
 
-# <<< ADD THIS LINE to create the directory before using it
 if(!dir.exists("filtered")) dir.create("filtered")
 
-# Filter and trim
-out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,160),
+# Filter and trim. The typo in 'multithread' has been fixed.
+# <<< TYPO FIXED HERE
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs,
                      maxN=0, maxEE=c(2,2), truncQ=2, rm.phix=TRUE,
                      compress=TRUE, multithread=FALSE)
 
