@@ -1,0 +1,7 @@
+pandas
+biopython
+scikit-learn
+streamlit
+umap-learn
+hdbscan
+matplotlib
