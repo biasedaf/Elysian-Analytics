@@ -8,12 +8,12 @@ import joblib
 import os
 
 # --- Configuration ---
-# Corrected paths for the new project structure
+# This section builds correct, absolute paths to prevent errors
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
 FASTA_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "training_data.fasta")
 LABELS_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "training_labels.csv")
-MODEL_OUTPUT_DIR = os.path.join(PROJECT_ROOT, "models")
+MODEL_OUTPUT_DIR = os.path.join(PROJECT_ROOT, "models") # Correct models folder path
 MODEL_FILENAME = "random_forest_baseline.pkl"
 KMER_SIZE = 6
 
@@ -24,24 +24,21 @@ def train_baseline_model():
     labels_df = pd.read_csv(LABELS_FILE)
     labels_dict = dict(zip(labels_df.Sequence_ID, labels_df.Taxon))
 
-    sequences = []
-    sequence_labels = []
+    sequences, sequence_labels = [], []
     for record in SeqIO.parse(FASTA_FILE, "fasta"):
         if record.id in labels_dict:
             sequences.append(str(record.seq))
             sequence_labels.append(labels_dict[record.id])
-
     print(f"Loaded {len(sequences)} labeled sequences.")
 
     print(f"\n2. Generating {KMER_SIZE}-mer features...")
     vectorizer = CountVectorizer(analyzer='char', ngram_range=(KMER_SIZE, KMER_SIZE))
     kmer_vectors = vectorizer.fit_transform(sequences)
 
-    print("3. Splitting data and training Random Forest model...")
+    print("3. Splitting data and training model...")
     X_train, X_test, y_train, y_test = train_test_split(
         kmer_vectors, sequence_labels, test_size=0.2, random_state=42, stratify=sequence_labels
     )
-
     rf_model = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
     rf_model.fit(X_train, y_train)
 
