@@ -1,0 +1,12 @@
+qseqid,pident,sseqid,novelty_flag
+ASV_1,99.76,"gi|282160362|gb|FJ914460.1| Uncultured marine dinoflagellate clone S12 18S ribosomal RNA gene, partial sequence",False
+ASV_2,98.81,"gi|190684137|gb|EU780629.1| Uncultured eukaryote clone AMT15_33B_21 18S ribosomal RNA gene, partial sequence",False
+ASV_3,99.53,"gi|636661266|gb|KJ760520.1| Uncultured eukaryote clone SGYW428 18S ribosomal RNA gene, partial sequence",False
+ASV_4,99.52,"gi|2072646324|gb|MZ620935.1| Uncultured marine dinoflagellate isolate ZBO-18 small subunit ribosomal RNA gene, partial sequence",False
+ASV_5,99.76,"gi|675601829|gb|KJ925274.1| Uncultured eukaryote clone 271F02 small subunit ribosomal RNA gene, partial sequence",False
+ASV_6,100.0,"gi|636660400|gb|KJ759654.1| Uncultured eukaryote clone SGYO762 18S ribosomal RNA gene, partial sequence",False
+ASV_7,99.76,"gi|636660091|gb|KJ759345.1| Uncultured eukaryote clone SGYO1193 18S ribosomal RNA gene, partial sequence",False
+ASV_8,100.0,"gi|169805732|gb|EU499988.1| Uncultured eukaryote clone dhot2a7 18S ribosomal RNA gene, partial sequence",False
+ASV_9,99.52,"gi|1355924980|gb|MG972354.1| Bacteriastrum furcatum isolate Na8A3 18S ribosomal RNA gene, partial sequence",False
+ASV_10,100.0,"gi|636660457|gb|KJ759711.1| Uncultured eukaryote clone SGYO915 18S ribosomal RNA gene, partial sequence",False
+ASV_11,100.0,"gi|1484642286|gb|MK003807.1| Uncultured eukaryote clone AMD_18S_OTUa_4399 small subunit ribosomal RNA gene, partial sequence",False
