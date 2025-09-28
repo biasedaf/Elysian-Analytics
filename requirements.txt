@@ -4,9 +4,9 @@ scikit-learn
 streamlit
 umap-learn
 hdbscan
-matplotlib
-streamlit
-pandas
 numpy
 tensorflow
 transformers
+matplotlib
+plotly
+pickle
