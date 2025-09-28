@@ -137,7 +137,7 @@ def main():
 
     # --- Sidebar ---
     with st.sidebar:
-        st.markdown("<div style='text-align: center;'><img src='https://i.imgur.com/392z2c3.png' width='100'><h1>AI eDNA Analyzer</h1></div>", unsafe_allow_html=True)
+        st.image("assets/your_logo.png", width=100) 
         st.markdown("---")
         st.subheader("📝 About this Project")
         st.info("This prototype uses AI to analyze environmental DNA (eDNA), demonstrating a complete pipeline from raw data to an interactive web application.")
@@ -162,7 +162,7 @@ def main():
     with col1:
         # Note: Ensure you have a logo image at this path or replace it.
         # For now, using a placeholder. Replace 'assets/your_logo.png' with your actual logo path.
-        st.image("https://i.imgur.com/392z2c3.png", width=100) 
+        st.image("assets/your_logo.png", width=100) 
     with col2:
         st.title("AI-Powered eDNA Sequence Analyzer")
 
