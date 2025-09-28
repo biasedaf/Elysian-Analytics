@@ -1,12 +1,7 @@
-pandas
-biopython
-scikit-learn
 streamlit
-umap-learn
-hdbscan
+pandas
 numpy
 tensorflow
-transformers
-matplotlib
+scikit-learn
 plotly
-pickle
+biopython
