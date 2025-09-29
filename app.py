@@ -12,7 +12,7 @@ from Bio.Blast import NCBIWWW, NCBIXML
 
 # --- Page Config ---
 st.set_page_config(
-    page_title="AI eDNA Analyzer",
+    page_title="Elysian Analytics",
     page_icon="🧬",
     layout="wide"
 )
@@ -158,13 +158,11 @@ def main():
 
     # --- Main Panel ---
     # <<< NEW SECTION IMPLEMENTED HERE >>>
-    col1, col2 = st.columns([1, 10]) # Adjusted column ratio for better alignment
+    col1, col2 = st.columns([1, 10]) # column ratio for better alignment
     with col1:
-        # Note: Ensure you have a logo image at this path or replace it.
-        # For now, using a placeholder. Replace 'assets/your_logo.png' with your actual logo path.
         st.image("assets/your_logo.png", width=100) 
     with col2:
-        st.title("AI-Powered eDNA Sequence Analyzer")
+        st.title("Elysian Analytics : An AI-Powered eDNA Sequence Analyzer")
 
     st.markdown("""
     This application uses artificial intelligence to analyze environmental DNA (eDNA) sequences. 
