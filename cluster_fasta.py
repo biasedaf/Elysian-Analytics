@@ -2,7 +2,6 @@ from Bio import SeqIO
 from collections import defaultdict
 
 # --- Configuration ---
-# Make sure this name matches your new FASTA file exactly
 input_fasta = "Combined_50_sequences.fasta" 
 output_fasta = "new_ASVs.fasta"
 
