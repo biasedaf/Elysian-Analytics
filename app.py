@@ -15,7 +15,7 @@ from sklearn.preprocessing import LabelEncoder
 st.set_page_config(page_title="Elysian Analytics", page_icon="🧬", layout="wide")
 
 # --- Configuration Constants ---
-HIGH_IDENTITY_THRESHOLD = 98.0  # Threshold for assuming known sequences are consistent
+HIGH_IDENTITY_THRESHOLD = 90.0  # Threshold for assuming known sequences are consistent
 NOVEL_PATTERN_LABEL = 'Novel_Pattern_Alpha' # The specific label used for your demo discovery sequence
 
 # All Helper Functions
