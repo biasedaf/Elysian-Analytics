@@ -62,11 +62,12 @@ golden_data = {
         "Chytridiomycota",
         "Chytridiomycota",
         "Chytridiomycota",
-        "Novel Sequence - 1",
-        "Novel Sequence - 1",
-        "Novel Sequence - 1",
-        "Novel Sequence - 1",
-        "Novel Sequence - 1",
+        # --- Labels for Class 3 ---
+        'Rhizoclosmatium sp.',
+        'Rhizoclosmatium sp.',
+        'Rhizoclosmatium sp.',
+        'Rhizoclosmatium sp.',
+        'Rhizoclosmatium sp.',
     ]
 }
 
