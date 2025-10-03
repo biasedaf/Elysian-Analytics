@@ -1,0 +1,80 @@
+/* ==========================================================================
+   COLOR PALETTE: DEEP OCEAN GLOW
+   ========================================================================== */
+:root {
+    --primary-color: #0E1117;
+    --secondary-color: #1F222B;
+    --accent-color: #00F6E5;
+    --accent-text-color: #0B3B4A;
+    --text-primary-color: #FAFAFA;
+    --success-color: #26D997;
+    --font: 'IBM Plex Sans', sans-serif; /* Streamlit's default font */
+}
+
+/* ==========================================================================
+   GENERAL STYLING
+   ========================================================================== */
+body {
+    background-color: var(--primary-color);
+    color: var(--text-primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary-color);
+}
+
+/* ==========================================================================
+   STREAMLIT COMPONENT STYLING
+   ========================================================================== */
+/* Main button styling */
+.stButton>button {
+    border-radius: 20px;
+    background-color: var(--accent-color);
+    color: var(--accent-text-color) !important; /* Important to override default */
+    border: none;
+    font-weight: bold;
+    transition: all .3s ease-in-out;
+    padding: 0.5rem 1.25rem;
+}
+
+.stButton>button:hover {
+    transform: scale(1.05);
+    background-color: var(--accent-color); /* Keep color on hover */
+    opacity: 0.85;
+    box-shadow: 0 4px 15px 0 rgba(0, 246, 229, 0.4);
+}
+
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+    background-color: var(--secondary-color);
+    border-right: 1px solid #2D333B;
+}
+
+/* Metric card styling */
+[data-testid="stMetric"] {
+    background-color: var(--secondary-color);
+    border: 1px solid #2D333B;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+/* The small text/tags below the metrics */
+[data-testid="stMetricDelta"] {
+    background-color: var(--success-color);
+    color: var(--secondary-color) !important;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+/* Info boxes */
+.st-emotion-cache-1wivap2 {
+    background-color: rgba(0, 246, 229, 0.1);
+}
+
+/* Dataframe styling */
+.stDataFrame {
+    border: 1px solid #2D333B;
+    border-radius: 10px;
+}
