@@ -1,0 +1,12 @@
+﻿,AI Predicted Taxonomy,AI Confidence,Percent Identity,Best Match Found in Database,Novelty Flag,Remarks
+0,Eukaryote,99.35%,98.58,"gi|20799880|gb|AY083000.1| Uncultured eukaryote clone RT3n22 18S ribosomal RNA gene, complete sequence",false,✔️ Consistent with NCBI
+1,Novel Sequence - 1,74.28%,97.84,"gi|3059779685|ref|XR_013107681.1| PREDICTED: Arvicanthis niloticus 18S ribosomal RNA (LOC143439457), rRNA",false,Potentially Novel (Low NCBI Match)
+2,Eukaryote,97.39%,99.64,"gi|3059779685|ref|XR_013107681.1| PREDICTED: Arvicanthis niloticus 18S ribosomal RNA (LOC143439457), rRNA",false,✔️ Consistent with NCBI
+3,Eukaryote,99.35%,97.52,"gi|20799880|gb|AY083000.1| Uncultured eukaryote clone RT3n22 18S ribosomal RNA gene, complete sequence",false,Potentially Novel (Low NCBI Match)
+4,Chytridiomycota,85.91%,97.16,"gi|2523348875|dbj|LC761281.1| Mesochytriales sp. 2-HN-2023 22GAbe-4 genes for 18S rRNA, ITS1, 5.8S rRNA, ITS2, 28S rRNA, partial and complete sequence",false,Potentially Novel (Low NCBI Match)
+5,Eukaryote,97.39%,99.64,"gi|2555166490|ref|XR_009216518.1| PREDICTED: Diceros bicornis minor 18S ribosomal RNA (LOC131396433), rRNA",false,✔️ Consistent with NCBI
+6,Eukaryote,99.35%,73.94,"gi|257835334|gb|GQ383284.1| Uncultured marine eukaryote clone MO010_500.00206 18S ribosomal RNA gene, partial sequence",false,Potentially Novel (Low NCBI Match)
+7,Eukaryote,94.49%,98.58,"gi|3059779685|ref|XR_013107681.1| PREDICTED: Arvicanthis niloticus 18S ribosomal RNA (LOC143439457), rRNA",false,✔️ Consistent with NCBI
+8,Chytridiomycota,87.05%,97.52,"gi|2523348875|dbj|LC761281.1| Mesochytriales sp. 2-HN-2023 22GAbe-4 genes for 18S rRNA, ITS1, 5.8S rRNA, ITS2, 28S rRNA, partial and complete sequence",false,Potentially Novel (Low NCBI Match)
+9,Chytridiomycota,48.95%,96.81,"gi|2523348875|dbj|LC761281.1| Mesochytriales sp. 2-HN-2023 22GAbe-4 genes for 18S rRNA, ITS1, 5.8S rRNA, ITS2, 28S rRNA, partial and complete sequence",false,Potentially Novel (Low NCBI Match)
+10,Chytridiomycota,88.17%,97.52,"gi|2523348875|dbj|LC761281.1| Mesochytriales sp. 2-HN-2023 22GAbe-4 genes for 18S rRNA, ITS1, 5.8S rRNA, ITS2, 28S rRNA, partial and complete sequence",false,Potentially Novel (Low NCBI Match)

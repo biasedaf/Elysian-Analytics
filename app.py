@@ -15,23 +15,12 @@ from sklearn.preprocessing import LabelEncoder
 st.set_page_config(page_title="Elysian Analytics", page_icon="🧬", layout="wide")
 
 # --- Configuration Constants ---
+
 HIGH_IDENTITY_THRESHOLD = 90.0
 # This should match the label used in your create_golden_dataset.py script
 NOVEL_PATTERN_LABEL = 'Rhizoclosmatium sp.'
 
-# --- Helper Functions ---
-
-def simplify_blast_title(title):
-    """Extracts the scientific name from the long BLAST title."""
-    try:
-        parts = title.split()
-        if len(parts) > 2:
-            # Join the second and third words, removing any trailing comma
-            return f"{parts[1]} {parts[2]}".replace(',', '')
-        return title
-    except:
-        return title
-
+PRECOMPUTED_RESULTS_FILE = 'precomputed_novelty.csv' # Define the filename here
 def parse_fasta(file_content):
     sequences = {}
     current_id, current_seq = None, []
@@ -137,8 +126,7 @@ def get_label_encoder():
     encoder_path = os.path.join("models", "label_encoder.pkl")
     try:
         with open(encoder_path, 'rb') as file:
-            encoder = pickle.load(file)
-            return encoder
+            return pickle.load(file)
     except FileNotFoundError:
         st.error(f"Saved label encoder ('{encoder_path}') not found. Please retrain the models to generate it.")
         return None
@@ -183,21 +171,50 @@ def to_csv(df):
 def get_remarks(row):
     ai_taxon = row['AI Predicted Taxonomy']
     percent_id = row['Percent Identity']
-    
     if ai_taxon == NOVEL_PATTERN_LABEL:
         return "⭐ AI Discovery: Novel Pattern Identified"
-    
     if percent_id < HIGH_IDENTITY_THRESHOLD:
         return "Potentially Novel (Low NCBI Match)"
-    
     if percent_id >= HIGH_IDENTITY_THRESHOLD:
         return "✔️ Consistent with NCBI"
-    
     return "⚠️ AI Prediction Differs from NCBI"
 
+# ----------------------------------------------------------------------
+# NEW FUNCTION: Reusable logic for displaying results
+# ----------------------------------------------------------------------
+def display_results(final_df, report_title):
+    """Takes a dataframe and displays the formatted report."""
+    st.subheader(report_title)
+    
+    # Pie chart for summary
+    class_counts = final_df['AI Predicted Taxonomy'].value_counts().reset_index()
+    class_counts.columns = ['Taxonomy', 'Count']
+    fig = px.pie(class_counts, values='Count', names='Taxonomy', title='AI Prediction Summary')
+    st.plotly_chart(fig, use_container_width=True)
+    
+    # Conditional formatting for the dataframe
+    st.dataframe(
+        final_df.style.applymap(
+            lambda x: 'background-color: #38761d; color: white' if x == '✔️ Consistent with NCBI' else 
+                      'background-color: #f1c232; color: black' if x in ['Potentially Novel (Low NCBI Match)', '⚠️ AI Prediction Differs from NCBI'] else 
+                      'background-color: #cc0000; color: white; font-weight: bold' if x == '⭐ AI Discovery: Novel Pattern Identified' else None, 
+            subset=['Remarks']
+        ).format({'Percent Identity': '{:.2f}%'}),
+        use_container_width=True
+    )
+    
+    st.download_button(label="Download Full Report as CSV", data=to_csv(final_df), file_name='integrated_analysis_report.csv', mime='text/csv')
+
+# ----------------------------------------------------------------------
+# MODIFIED MAIN FUNCTION
+# ----------------------------------------------------------------------
 def main():
     if 'analysis_run' not in st.session_state: st.session_state.analysis_run = False
+
+    # --- Sidebar (No changes) ---
     with st.sidebar:
+        st.subheader("📝 About this Project")
+        st.info("This AI prototype analyzes eDNA sequences to accelerate deep-sea biodiversity discovery.")
         st.title("Elysian Analytics")
         st.markdown("---")
         st.subheader("📁 Upload Your FASTA File")
@@ -213,11 +230,12 @@ def main():
                 st.error("⚠️ Please upload a FASTA file first.")
                 st.session_state.analysis_run = False
         st.markdown("---")
-        st.subheader("📝 About this Project")
-        st.info("This AI prototype analyzes eDNA sequences to accelerate deep-sea biodiversity discovery.")
+        
+
     st.title("AI-Powered eDNA Sequence Analyzer")
+
+    # --- Page Content Logic ---
     if not st.session_state.analysis_run:
-        st.markdown("This application uses artificial intelligence to analyze environmental DNA (eDNA) sequences, providing rapid taxonomic classification and novelty detection.")
         with st.expander("📖 How to Use This App"):
             st.write("1. **Upload a FASTA file** using the uploader in the sidebar.")
             st.write("2. **Select an AI model** (XGBoost is recommended).")
@@ -237,6 +255,7 @@ def main():
             ai_results_df = pd.DataFrame()
             if label_encoder:
                 with st.spinner(f"Running {st.session_state.model_choice} model..."):
+                    # ... (AI prediction logic remains unchanged) ...
                     model_choice = st.session_state.model_choice
                     # ... [prediction logic is unchanged] ...
                     predictions, confidence_scores, sequence_ids = None, None, None
@@ -265,26 +284,10 @@ def main():
                 final_df = pd.merge(ai_results_df, live_novelty_df, on="ASV ID")
                 final_df['Remarks'] = final_df.apply(get_remarks, axis=1)
                 final_df['Novelty Flag'] = final_df['AI Predicted Taxonomy'] == NOVEL_PATTERN_LABEL
-                
                 final_df = final_df[['AI Predicted Taxonomy', 'AI Confidence', 'Percent Identity', 'Best Match Found in Database', 'Novelty Flag', 'Remarks']]
                 
-                st.subheader("Integrated Analysis Report")
-                class_counts = final_df['AI Predicted Taxonomy'].value_counts().reset_index()
-                class_counts.columns = ['Taxonomy', 'Count']
-                fig = px.pie(class_counts, values='Count', names='Taxonomy', title='AI Prediction Summary')
-                st.plotly_chart(fig, use_container_width=True)
-                
-                st.dataframe(
-                    final_df.style.applymap(
-                        lambda x: 'background-color: #38761d; color: white' if x == '✔️ Consistent with NCBI' else 
-                                  'background-color: #f1c232; color: black' if x in ['Potentially Novel (Low NCBI Match)', '⚠️ AI Prediction Differs from NCBI'] else 
-                                  'background-color: #cc0000; color: white; font-weight: bold' if x == '⭐ AI Discovery: Novel Pattern Identified' else None, 
-                        subset=['Remarks']
-                    ).format({'Percent Identity': '{:.2f}%'}),
-                    use_container_width=True
-                )
-                
-                st.download_button(label="Download Full Report as CSV", data=to_csv(final_df), file_name='integrated_analysis_report.csv', mime='text/csv')
+                # **MODIFIED: Call the reusable display function**
+                display_results(final_df, "Your Integrated Analysis Report")
             else:
                 st.error("Analysis could not be completed.")
 
