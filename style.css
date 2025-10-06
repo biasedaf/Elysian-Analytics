@@ -78,3 +78,21 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid #2D333B;
     border-radius: 10px;
 }
+/* ==========================================================================
+   GLOBAL BACKGROUND IMAGE (Safe, works with Streamlit)
+   ========================================================================== */
+.stApp {
+    background: linear-gradient(rgba(14, 17, 23, 0.7), rgba(14, 17, 23, 0.7)),
+                url("dna_helix.png") no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--text-primary-color);
+}
+
+/* Optional: keep content readable over image */
+.block-container {
+    background-color: rgba(15, 18, 24, 0.75);
+    border-radius: 15px;
+    padding: 2rem;
+}

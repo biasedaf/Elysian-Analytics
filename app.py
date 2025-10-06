@@ -20,6 +20,25 @@ HIGH_IDENTITY_THRESHOLD = 90.0
 NOVEL_PATTERN_LABEL = 'Rhizoclosmatium sp.'
 
 # --- [Enhancement 1] Custom CSS ---
+import base64
+
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image:
+        encoded_string = base64.b64encode(image.read()).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background: linear-gradient(rgba(14,17,23,0.7), rgba(14,17,23,0.7)),
+                        url(data:image/png;base64,{encoded_string}) no-repeat center center fixed;
+            background-size: cover;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 def local_css(file_name):
     try:
         with open(file_name) as f:
@@ -209,7 +228,7 @@ def display_results(final_df, report_title):
     
     # Conditional formatting for the dataframe
     st.dataframe(
-        final_df.style.applymap(
+        final_df.style.apply(
             lambda x: 'background-color: #38761d; color: white' if x == '✔️ Consistent with NCBI' else 
                       'background-color: #f1c232; color: black' if x in ['Potentially Novel (Low NCBI Match)', '⚠️ AI Prediction Differs from NCBI'] else 
                       'background-color: #cc0000; color: white; font-weight: bold' if x == '⭐ AI Discovery: Novel Pattern Identified' else None, 
@@ -223,6 +242,8 @@ def display_results(final_df, report_title):
 
 def main():
     local_css("style.css") # Load CSS
+    add_bg_from_local("dna_helix.png")
+
     
     if 'analysis_run' not in st.session_state: st.session_state.analysis_run = False
 
