@@ -1,3 +1,4 @@
+#app.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -281,7 +282,11 @@ def main():
             col3.metric("Analysis Speed", "< 5 sec", "Per 10 Sequences")
         
         st.markdown("<hr>", unsafe_allow_html=True)
-
+        with st.expander("📖 How to Use This App"):
+            st.write("1. **Upload a FASTA file** using the uploader in the sidebar.")
+            st.write("2. **Select an AI model** (XGBoost is recommended for best performance).")
+            st.write("3. **Click 'Analyze Sequences'** to start the analysis.")
+            st.write("4. Explore the **AI Prediction** and **Live Novelty Report** in the results tabs.")
         with st.container():
             st.markdown("#### 📊 Sample Analysis Output")
             st.write("The platform generates an interactive report, allowing for quick interpretation of biodiversity data.")

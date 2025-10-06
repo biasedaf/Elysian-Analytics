@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Main button styling */
 .stButton>button {
     border-radius: 20px;
-    background-color: var(--accent-color);
+    background-color: green;
     color: var(--accent-text-color) !important; /* Important to override default */
     border: none;
     font-weight: bold;
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .stButton>button:hover {
     transform: scale(1.05);
-    background-color: var(--accent-color); /* Keep color on hover */
+    background-color: green; /* Keep color on hover */
     opacity: 0.85;
     box-shadow: 0 4px 15px 0 rgba(0, 246, 229, 0.4);
 }
@@ -109,18 +109,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Make sidebar text and elements readable */
-[data-testid="stSidebar"] * {
+/* [data-testid="stSidebar"] * {
     color: var(--text-primary-color) !important;
     font-family: var(--font);
-}
+} */
 
 /* Sidebar headers and info boxes */
+/* Make sidebar text and elements readable — FIXED (no stray text) */
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] label,
 [data-testid="stSidebar"] h1,
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3,
 [data-testid="stSidebar"] h4 {
-    color: var(--accent-color);
+    color: var(--text-primary-color) !important;
+    font-family: var(--font);
 }
+
 
 [data-testid="stSidebar"] .st-emotion-cache-1wivap2 {
     background-color: rgba(0, 246, 229, 0.15);
