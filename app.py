@@ -272,7 +272,7 @@ def main():
 
     if not st.session_state.analysis_run:
         with st.container():
-            st.subheader("An AI-Powered Platform for eDNA Analysis")
+            st.subheader("A New, Efficient and Accurate way to research eDNA ! ")
             st.markdown("#### 🔬 Our AI Model's Capabilities")
             
             col1, col2, col3 = st.columns(3)
