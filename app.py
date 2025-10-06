@@ -268,10 +268,9 @@ def main():
                 st.session_state.analysis_run = False
         st.markdown("---")
         
-    st.title("AI-Powered eDNA Sequence Analyzer")
+    st.title("Elysian Analytics, an AI-Powered eDNA Sequence Analyzer")
 
     if not st.session_state.analysis_run:
-        # --- [Enhancement 2] Polished Homepage ---
         with st.container():
             st.subheader("An AI-Powered Platform for eDNA Analysis")
             st.markdown("#### 🔬 Our AI Model's Capabilities")
