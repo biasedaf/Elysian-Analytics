@@ -1,13 +1,12 @@
 # Elysian Analytics: AI-Powered eDNA Analyzer
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://streamlit.io/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://elysian-analytics-7lr7c8jvkadnuykxlteokg.streamlit.app/)
+
+[Demo Video](https://www.youtube.com/watch?v=KUIW1Y8ABew)
 
 Elysian Analytics is a powerful Streamlit web application built to accelerate the analysis of environmental DNA (eDNA) sequences. It provides an AI-driven pipeline to rapidly classify eukaryotic taxa and identify potentially novel organisms, overcoming the limitations of traditional, time-consuming, database-dependent methods.
 
 This tool integrates machine learning models with live NCBI BLAST searches to provide a comprehensive, interactive, and actionable biodiversity report from a simple FASTA file.
-
-![Elysian Analytics Screenshot](https://i.imgur.com/your-screenshot-url.png)
-*(Note: Replace the URL above with a link to a screenshot of your app)*
 
 ---
 
@@ -55,3 +54,65 @@ Analyzing raw eDNA sequencing reads, especially from under-sampled environments 
 ## Project Structure 
 
 For the app to run correctly, you must have the trained models and static files in the following structure:
+```text
+eDNA_Analytics/
+├── app.py              
+├── models/          
+│   ├── xgboost_model.pkl
+│   ├── random_forest_baseline.pkl
+│   └── label_encoder.pkl
+├── dl_model.h5        
+├── dna_helix.png    
+├── style.css         
+└── requirements.txt
+```
+##  Getting Started
+
+### 1. Prerequisites
+
+* Python 3.9 or higher
+* A virtual environment (recommended)
+
+### 2. Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/Elysian-Analytics.git](https://github.com/your-username/Elysian-Analytics.git)
+    cd Elysian-Analytics
+    ```
+
+2.  **Create and activate a virtual environment:**
+    ```bash
+    # For macOS/Linux
+    python3 -m venv venv
+    source venv/bin/activate
+    
+    # For Windows
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
+
+3.  **Install the required dependencies:**
+    Create a `requirements.txt` file with the contents below, then run `pip install -r requirements.txt`.
+
+    **`requirements.txt`**
+    ```
+    streamlit
+    pandas
+    numpy
+    tensorflow
+    scikit-learn
+    xgboost
+    plotly
+    biopython
+    ```
+
+4.  **Add Model & Static Files:**
+    Place your trained models (`.pkl`, `.h5`), background image (`dna_helix.png`), and CSS (`style.css`) in the correct directories as shown in the **Project Structure** section.
+
+### 3. Running the App
+
+Once all dependencies and model files are in place, run the app from your terminal:
+
+```bash
+streamlit run app.py
