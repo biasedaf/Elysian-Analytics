@@ -1,4 +1,4 @@
-# 🌊 Elysian Analytics: AI-Powered eDNA Analyzer
+# Elysian Analytics: AI-Powered eDNA Analyzer
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://streamlit.io/)
 
@@ -26,7 +26,7 @@ Analyzing raw eDNA sequencing reads, especially from under-sampled environments 
     * **Potentially Novel:** Sequences with low database matches.
     * **Consistent:** Sequences where the AI and NCBI agree.
 
-## Key Features 🚀
+## Key Features 
 
 * **Multi-Model Analysis:** Choose between three different trained AI models:
     * **Deep Learning (1D-CNN):** A Keras/TensorFlow model for deep feature extraction.
@@ -40,7 +40,7 @@ Analyzing raw eDNA sequencing reads, especially from under-sampled environments 
 
 ---
 
-## Technology Stack 🛠️
+## Technology Stack 
 
 * **Frontend:** Streamlit
 * **Core Python:** Python 3.9+
@@ -52,6 +52,6 @@ Analyzing raw eDNA sequencing reads, especially from under-sampled environments 
 
 ---
 
-## Project Structure 📁
+## Project Structure 
 
 For the app to run correctly, you must have the trained models and static files in the following structure:
