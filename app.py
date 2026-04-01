@@ -209,12 +209,12 @@ def get_remarks(row):
     ai_taxon = row['AI Predicted Taxonomy']
     percent_id = row['Percent Identity']
     if ai_taxon == NOVEL_PATTERN_LABEL:
-        return "⭐ AI Discovery: Novel Pattern Identified"
+        return "AI Discovery: Novel Pattern Identified"
     if percent_id < HIGH_IDENTITY_THRESHOLD:
         return "Potentially Novel (Low NCBI Match)"
     if percent_id >= HIGH_IDENTITY_THRESHOLD:
-        return "✔️ Consistent with NCBI"
-    return "⚠️ AI Prediction Differs from NCBI"
+        return "Consistent with NCBI"
+    return "AI Prediction Differs from NCBI"
 
 # ... (display_results function is unchanged) ...
 def display_results(final_df, report_title):
@@ -249,14 +249,14 @@ def main():
     if 'analysis_run' not in st.session_state: st.session_state.analysis_run = False
 
     with st.sidebar:
-        st.title("🌊 Elysian Analytics")
+        st.title("Elysian Analytics")
         st.markdown("---")
-        st.subheader("📝 About this Project")
+        st.subheader("About this Project")
         st.info("This AI prototype analyzes eDNA sequences to accelerate deep-sea biodiversity discovery.")
         st.markdown("---")
-        st.subheader("📁 Upload Your FASTA File")
+        st.subheader("Upload Your FASTA File")
         uploaded_file = st.file_uploader("Upload a FASTA file", type=['fasta', 'fa', 'fna'], label_visibility="collapsed")
-        st.subheader("🤖 Select AI Model")
+        st.subheader("Select AI Model")
         model_choice = st.selectbox("Choose analysis model:", ["XGBoost", "Deep Learning (CNN)", "Baseline (Random Forest)"], label_visibility="collapsed")
         if st.button("Analyze Sequences", type="primary", use_container_width=True):
             if uploaded_file is not None:
@@ -264,7 +264,7 @@ def main():
                 st.session_state.uploaded_file = uploaded_file
                 st.session_state.model_choice = model_choice
             else:
-                st.error("⚠️ Please upload a FASTA file first.")
+                st.error("Please upload a FASTA file first.")
                 st.session_state.analysis_run = False
         st.markdown("---")
         
@@ -273,7 +273,7 @@ def main():
     if not st.session_state.analysis_run:
         with st.container():
             st.subheader("A New, Efficient and Accurate way to research eDNA ! ")
-            st.markdown("#### 🔬 Our AI Model's Capabilities")
+            st.markdown("#### The AI Model's Capabilities")
             
             col1, col2, col3 = st.columns(3)
             col1.metric("Taxonomic Classes", "8", "Trained to Identify")
@@ -281,13 +281,13 @@ def main():
             col3.metric("Analysis Speed", "< 5 sec", "Per 10 Sequences")
         
         st.markdown("<hr>", unsafe_allow_html=True)
-        with st.expander("📖 How to Use This App"):
+        with st.expander("How to Use This App"):
             st.write("1. **Upload a FASTA file** using the uploader in the sidebar.")
             st.write("2. **Select an AI model** (XGBoost is recommended for best performance).")
             st.write("3. **Click 'Analyze Sequences'** to start the analysis.")
             st.write("4. Explore the **AI Prediction** and **Live Novelty Report** in the results tabs.")
         with st.container():
-            st.markdown("#### 📊 Sample Analysis Output")
+            st.markdown("#### Sample Analysis Output")
             st.write("The platform generates an interactive report, allowing for quick interpretation of biodiversity data.")
 
             sample_data = {'Taxonomy': ['Bacterium', 'Eukaryote', 'Chytridiomycota', 'Rhizoclosmatium sp.'], 'Count': [45, 32, 18, 5]}
@@ -345,7 +345,7 @@ def main():
                 final_df = final_df[['AI Predicted Taxonomy', 'AI Confidence', 'Percent Identity', 'Best Match Found in Database', 'Novelty Flag', 'Remarks']]
                 
                 # --- [Enhancement 3] Key Findings Section ---
-                st.subheader("📊 Key Findings")
+                st.subheader("Key Findings")
                 
                 total_asvs = len(final_df)
                 novel_count = final_df['Novelty Flag'].sum()
@@ -353,13 +353,13 @@ def main():
                 
                 col1, col2, col3 = st.columns(3)
                 col1.metric("Total ASVs Analyzed", f"{total_asvs}")
-                col2.metric("⭐ AI Discoveries", f"{novel_count}")
+                col2.metric("AI Discoveries", f"{novel_count}")
                 col3.metric("Top Predicted Group", f"{top_group}")
                 
                 st.markdown("---")
 
                 # --- [Enhancement 4] Tabs for Organized Results ---
-                tab1, tab2 = st.tabs(["📈 Summary & Visuals", "📄 Detailed Report"])
+                tab1, tab2 = st.tabs(["Summary & Visuals", "Detailed Report"])
 
                 with tab1:
                     st.subheader("AI Prediction Summary")
